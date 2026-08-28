@@ -1399,19 +1399,6 @@ function importSettings() {
                 if (Array.isArray(data)) {
                     SIM_LIST = [];
 
-                    /*
-                    data.forEach(d => {
-                        // KORREKTUR: Name explizit aus d.n (vom Export-Objekt) nehmen
-                        var simName = d.n || d.name || "Simulation " + (SIM_LIST.length + 1);
-                        var s = new SimObject(Date.now() + Math.random(), simName);
-
-                        if (d.d) s.config = unpackConfig(d.d);
-                        else s.config = d.config || d;
-
-                        SIM_LIST.push(s);
-                    });
-                    */
-
                     data.forEach(d => {
                         var simName = "Simulation " + (SIM_LIST.length + 1);
                         var configData = null;
