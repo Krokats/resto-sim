@@ -497,36 +497,6 @@ var TALENT_TREES = {
     ]
 };
 
-// ============================================================================
-// TALENT PRESETS
-// ============================================================================
-var TALENT_PRESETS = {
-    "Feral DPS (11/35/5)": {
-        // Balance
-        impWrath: 0, naturesGrasp: 1, impNaturesGrasp: 4, sylvanBlessing: 0,
-        guidanceOfTheDream: 0, impMoonfire: 0, naturalWeapons: 3, naturalShapeshifter: 2,
-        moonfury: 0, omenOfClarity: 1, naturesReach: 0,
-        vengeance: 0, moonglow: 0,
-        owlkinFrenzy: 0, moonkinForm: 0, naturesGrace: 0, impStarfire: 0,
-        balanceOfAllThings: 0, galeWinds: 0,
-        eclipse: 0,
-        // Feral
-        ferocity: 5, feralAggression: 0, 
-        feralInstinct: 0, brutalImpact: 2, thickHide: 0, openWounds: 3, 
-        feralSwiftness: 2, feralCharge: 0, sharpenedClaws: 3, primalFury: 2, 
-        predatoryStrikes: 3, bloodFrenzy: 2, impShred: 2, 
-        ancientBrutality: 2, berserk: 1, 
-        heartOfTheWild: 5, carnage: 2, 
-        leaderOfThePack: 1,
-        // Restoration
-        impMarkOfTheWild: 0, furor: 5,
-        impHealingTouch: 0, naturesFocus: 0, subtlety: 0,
-        swiftmend: 0, genesis: 0, reflection: 0,
-        giftOfNature: 0, tranquilSpirit: 0,
-        aessinasBloom: 0, natureSwiftness: 0, preservation: 0,
-        impRegrowth: 0, impTranquility: 0,
-        treeOfLife: 0
-    }
-};
 
-var TALENT_CONFIG = structuredClone(TALENT_PRESETS["Feral DPS (11/35/5)"]);
+var TALENT_CONFIG = structuredClone(TALENT_PRESETS["Full Resto (0/0/51)"]);
+
