@@ -167,8 +167,8 @@ var SLOT_LAYOUT = {
 
 // Base 3.38% Crit for Druids, Base Hit 0
 const RACE_STATS = {
-    "Tauren": { hit: 0, crit: 3.33, haste: 0, stam: 72, int: 95 },
-    "NightElf": { hit: 0, crit: 3.33, haste: 1, stam: 69, int: 100 }
+    "Tauren": { hit: 0, crit: 3.33, haste: 0, stam: 72, int: 95, spirit: 112 },
+    "NightElf": { hit: 0, crit: 3.33, haste: 1, stam: 69, int: 100, spirit: 112 }
 };
 
 // ============================================================================
