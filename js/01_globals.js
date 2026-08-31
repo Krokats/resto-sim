@@ -465,7 +465,55 @@ var TALENT_PRESETS = {
         aessinasBloom: 0, natureSwiftness: 0, preservation: 0,
         impRegrowth: 5, impTranquility: 0,
         treeOfLife: 0
-    }
+    },
+    "Raid Healing (NS) (18/0/33)": {
+        // Balance
+        impWrath: 5, naturesGrasp: 1, impNaturesGrasp: 0, sylvanBlessing: 0,
+        guidanceOfTheDream: 0, impMoonfire: 0, naturalWeapons: 3, naturalShapeshifter: 3,
+        moonfury: 0, omenOfClarity: 1, naturesReach: 2,
+        vengeance: 0, moonglow: 3,
+        owlkinFrenzy: 0, moonkinForm: 0, naturesGrace: 0, impStarfire: 0,
+        balanceOfAllThings: 0, galeWinds: 0,
+        eclipse: 0,
+        // Feral
+        ferocity: 0, feralAggression: 0, feralInstinct: 0, brutalImpact: 0,
+        thickHide: 0, openWounds: 0, feralSwiftness: 0, feralCharge: 0,
+        sharpenedClaws: 0, primalFury: 0, predatoryStrikes: 0, bloodFrenzy: 0,
+        impShred: 0, ancientBrutality: 0, berserk: 0, heartOfTheWild: 0,
+        carnage: 0, leaderOfThePack: 0,
+        // Restoration
+        impMarkOfTheWild: 5, furor: 0,
+        impHealingTouch: 0, naturesFocus: 5, subtlety: 0,
+        swiftmend: 1, genesis: 3, reflection: 2,
+        giftOfNature: 5, tranquilSpirit: 0,
+        aessinasBloom: 0, natureSwiftness: 1, preservation: 3,
+        impRegrowth: 5, impTranquility: 2,
+        treeOfLife: 1
+    },
+    "Raid Healing (No NS) (18/0/33)": {
+        // Balance
+        impWrath: 5, naturesGrasp: 1, impNaturesGrasp: 0, sylvanBlessing: 0,
+        guidanceOfTheDream: 0, impMoonfire: 0, naturalWeapons: 3, naturalShapeshifter: 3,
+        moonfury: 0, omenOfClarity: 1, naturesReach: 2,
+        vengeance: 0, moonglow: 3,
+        owlkinFrenzy: 0, moonkinForm: 0, naturesGrace: 0, impStarfire: 0,
+        balanceOfAllThings: 0, galeWinds: 0,
+        eclipse: 0,
+        // Feral
+        ferocity: 0, feralAggression: 0, feralInstinct: 0, brutalImpact: 0,
+        thickHide: 0, openWounds: 0, feralSwiftness: 0, feralCharge: 0,
+        sharpenedClaws: 0, primalFury: 0, predatoryStrikes: 0, bloodFrenzy: 0,
+        impShred: 0, ancientBrutality: 0, berserk: 0, heartOfTheWild: 0,
+        carnage: 0, leaderOfThePack: 0,
+        // Restoration
+        impMarkOfTheWild: 5, furor: 0,
+        impHealingTouch: 0, naturesFocus: 5, subtlety: 0,
+        swiftmend: 1, genesis: 3, reflection: 0,
+        giftOfNature: 5, tranquilSpirit: 2,
+        aessinasBloom: 0, natureSwiftness: 0, preservation: 3,
+        impRegrowth: 5, impTranquility: 2,
+        treeOfLife: 1
+    },
 };
 
 // Laden aus dem LocalStorage (falls der User eigene gespeichert hat)
