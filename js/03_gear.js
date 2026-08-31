@@ -70,7 +70,7 @@ async function loadDatabase() {
         ITEM_ID_MAP = {};
         ITEM_DB.forEach(i => { ITEM_ID_MAP[i.id] = i; });
         ENCHANT_DB = enchants;
-
+        if (typeof initSourceTree === "function") initSourceTree();
         initGearPlannerUI();
         var statusEl = document.getElementById("dbStatus");
         if (statusEl) {
@@ -290,6 +290,21 @@ function showTooltip(e, item) {
         }
     }
 
+    // ---> NEU: Source Info anzeigen <---
+    if (item.sources && item.sources.length > 0) {
+        html += '<div class="tt-spacer"></div>';
+        html += '<div class="tt-white" style="color: #00ccff;">Sources:</div>';
+        
+        item.sources.forEach(function(src) {
+            var srcText = "";
+            if (src.category) srcText += src.category;
+            if (src.subCategory) srcText += (srcText ? " > " : "") + src.subCategory;
+            if (src.detail) srcText += (srcText ? " > " : "") + src.detail;
+            
+            html += '<div class="tt-white" style="margin-left:10px; color: #88ccff;">' + srcText + '</div>';
+        });
+    }
+
     tt.innerHTML = html;
     moveTooltip(e);
 }
@@ -432,24 +447,53 @@ function renderItemList(filterText) {
     if (slotKey === "Idol") slotKey = "Relic";
 
     var relevantItems = ITEM_DB.filter(function (i) {
+        // --- 1. SLOT LOGIK (Speziell für Resto) ---
+        let slotMatches = false;
         if (CURRENT_SELECTING_SLOT === "Main Hand") {
             var s = i.slot.toLowerCase().replace(/[\s-]/g, "");
-            if (s !== "mainhand" && s !== "onehand" && s !== "twohand") return false;
-
-            // NEU: Greift die neue Button-Filterung auf
-            if (CURRENT_MH_FILTER === "One-Hand" && s !== "mainhand" && s !== "onehand") return false;
-            if (CURRENT_MH_FILTER === "Two-Hand" && s !== "twohand") return false;
-
-            return i.weaponType;
+            if (s === "mainhand" || s === "onehand" || s === "twohand") {
+                // NEU: Greift die Button-Filterung für Waffen auf
+                if (CURRENT_MH_FILTER === "One-Hand" && s !== "mainhand" && s !== "onehand") return false;
+                if (CURRENT_MH_FILTER === "Two-Hand" && s !== "twohand") return false;
+                slotMatches = !!i.weaponType;
+            }
+        } else if (CURRENT_SELECTING_SLOT === "Finger 1") {
+            slotMatches = (i.slot === slotKey && GEAR_SELECTION["Finger 2"] != i.id);
+        } else if (CURRENT_SELECTING_SLOT === "Finger 2") {
+            slotMatches = (i.slot === slotKey && GEAR_SELECTION["Finger 1"] != i.id);
+        } else if (CURRENT_SELECTING_SLOT === "Trinket 1") {
+            slotMatches = (i.slot === slotKey && GEAR_SELECTION["Trinket 2"] != i.id);
+        } else if (CURRENT_SELECTING_SLOT === "Trinket 2") {
+            slotMatches = (i.slot === slotKey && GEAR_SELECTION["Trinket 1"] != i.id);
+        } else if (CURRENT_SELECTING_SLOT === "Off Hand") {
+            slotMatches = (i.slot === "Held In Off-Hand");
+        } else if (CURRENT_SELECTING_SLOT === "Idol") {
+            slotMatches = (i.slot === "Relic" || i.slot === "Idol"); 
+        } else {
+            slotMatches = (i.slot === slotKey);
         }
 
-        if (CURRENT_SELECTING_SLOT === "Finger 1" && GEAR_SELECTION["Finger 2"] == i.id) return false;
-        if (CURRENT_SELECTING_SLOT === "Finger 2" && GEAR_SELECTION["Finger 1"] == i.id) return false;
-        if (CURRENT_SELECTING_SLOT === "Trinket 1" && GEAR_SELECTION["Trinket 2"] == i.id) return false;
-        if (CURRENT_SELECTING_SLOT === "Trinket 2" && GEAR_SELECTION["Trinket 1"] == i.id) return false;
+        if (!slotMatches) return false;
 
-        if (CURRENT_SELECTING_SLOT === "Off Hand") return (i.slot === "Held In Off-Hand");
-        return i.slot === slotKey;
+        // --- 2. SOURCE FILTER LOGIK ---
+        let isSourceEnabled = false;
+        if (!i.sources || i.sources.length === 0) {
+            isSourceEnabled = WORLD_DROPS_ENABLED;
+        } else {
+            // Checkt, ob mindestens EINE Quelle des Items im Filter aktiv ist
+            isSourceEnabled = i.sources.some(function(src) {
+                let cat = src.category || "Unknown";
+                let sub = src.subCategory || "Unknown";
+                let det = src.detail || "";
+                
+                if (SOURCE_TREE[cat] && SOURCE_TREE[cat][sub] && SOURCE_TREE[cat][sub][det] !== undefined) {
+                    return SOURCE_TREE[cat][sub][det] === true;
+                }
+                return true;
+            });
+        }
+
+        return isSourceEnabled;
     });
 
     // Calculate Score with Context (Slot Name) for Set Bonuses
