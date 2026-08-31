@@ -991,6 +991,9 @@ function calculateGearStats() {
     if (isChecked("buff_arcane_brilliance")) charStats.int += 31;
     if (isChecked("buff_gotw")) { charStats.int += 16; charStats.spirit += 16; }
 
+    if (getVal("buff_bow")) charStats.mp5 += 33;
+    if (getVal("buff_mst")) charStats.mp5  += 25;
+
     if (isChecked("buff_elixir_dreamshard")) { charStats.hp += 15; charStats.crit += 2; }
     if (isChecked("buff_cerebral")) charStats.int += 25;
 
