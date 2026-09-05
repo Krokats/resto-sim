@@ -41,9 +41,11 @@
                         <img src="Krokat.png" alt="Krokat" class="header-avatar">
                         <h1>Krokat's Resto Sim</h1>
                     </div>
-                    <input type="text" id="simName" class="sim-name-input" value="Simulation 1" onchange="updateSimName()">
+                    <input type="text" id="simName" class="sim-name-input" value="Simulation 1"
+                        onchange="updateSimName()">
                     <div class="header-actions">
-                        <button class="share-btn" onclick="openCommunityModal('sim')" style="margin-right: 5px;">🌍 Community Builds</button>
+                        <button class="share-btn" onclick="openCommunityModal('sim')" style="margin-right: 5px;">🌍
+                            Community Builds</button>
                         <button class="share-btn" onclick="openOtherSimsModal()">Other Simulations</button>
                     </div>
                 </header>
@@ -80,35 +82,50 @@
                 </div>
 
                 <!-- COMMUNITY BUILDS MODAL -->
-                <div id="communityModal" class="modal-overlay hidden" onclick="if(event.target === this) closeCommunityModal()">
+                <div id="communityModal" class="modal-overlay hidden"
+                    onclick="if(event.target === this) closeCommunityModal()">
                     <div class="modal-box" style="max-width: 900px; width: 95%;">
                         <div class="modal-header">
                             <span class="modal-title">🌍 Community Builds</span>
                             <span class="modal-close" onclick="closeCommunityModal()">×</span>
                         </div>
-                        
-                        <div class="community-auth-bar" id="communityAuthBar" style="display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; border: 1px solid var(--border-color); margin-bottom: 20px; flex-wrap: wrap; gap: 15px;">
+
+                        <div class="community-auth-bar" id="communityAuthBar"
+                            style="display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; border: 1px solid var(--border-color); margin-bottom: 20px; flex-wrap: wrap; gap: 15px;">
                             <div style="display: flex; align-items: center; gap: 15px;">
-                                <img id="discordAvatarImg" src="" alt="Avatar" style="width: 45px; height: 45px; border-radius: 50%; background: #5865F2; display: none; object-fit: cover;">
-                                <div id="discordAvatarPlaceholder" style="width: 45px; height: 45px; border-radius: 50%; background: #5865F2; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">👾</div>
+                                <img id="discordAvatarImg" src="" alt="Avatar"
+                                    style="width: 45px; height: 45px; border-radius: 50%; background: #5865F2; display: none; object-fit: cover;">
+                                <div id="discordAvatarPlaceholder"
+                                    style="width: 45px; height: 45px; border-radius: 50%; background: #5865F2; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+                                    👾</div>
                                 <div id="discordUserDisplay" style="display: flex; flex-direction: column;">
                                     <div style="font-weight: bold; font-size: 1.1rem;">Not logged in</div>
-                                    <div style="font-size: 0.75rem; color: #888;">Log in to vote, publish, and manage your builds.</div>
+                                    <div style="font-size: 0.75rem; color: #888;">Log in to vote, publish, and manage
+                                        your builds.</div>
                                 </div>
                             </div>
                             <div>
-                                <button class="primary-btn" id="discordLoginBtn" onclick="loginWithDiscord()" style="background-color: #5865F2; border-color: #5865F2;">Login with Discord</button>
+                                <button class="primary-btn" id="discordLoginBtn" onclick="loginWithDiscord()"
+                                    style="background-color: #5865F2; border-color: #5865F2;">Login with
+                                    Discord</button>
                             </div>
                         </div>
 
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin: 15px 0; flex-wrap: wrap; gap: 10px;">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin: 15px 0; flex-wrap: wrap; gap: 10px;">
                             <div class="view-toggles" style="margin: 0;">
-                                <button class="view-btn active" id="tab_sim" onclick="switchCommunityTab('sim')">Full Sims</button>
-                                <button class="view-btn" id="tab_gear" onclick="switchCommunityTab('gear')">Gear</button>
-                                <button class="view-btn" id="tab_talents" onclick="switchCommunityTab('talents')">Talents</button>
-                                <button class="view-btn" id="tab_rotation" onclick="switchCommunityTab('rotation')">Rotations</button>
+                                <button class="view-btn active" id="tab_sim" onclick="switchCommunityTab('sim')">Full
+                                    Sims</button>
+                                <button class="view-btn" id="tab_gear"
+                                    onclick="switchCommunityTab('gear')">Gear</button>
+                                <button class="view-btn" id="tab_talents"
+                                    onclick="switchCommunityTab('talents')">Talents</button>
+                                <button class="view-btn" id="tab_rotation"
+                                    onclick="switchCommunityTab('rotation')">Rotations</button>
                             </div>
-                            <button class="primary-btn" style="background-color: #4caf50; border-color: #4caf50; padding: 6px 15px;" onclick="openPublishModal(CURRENT_COMMUNITY_TAB)">⬆️ Save your Build</button>
+                            <button class="primary-btn"
+                                style="background-color: #4caf50; border-color: #4caf50; padding: 6px 15px;"
+                                onclick="openPublishModal(CURRENT_COMMUNITY_TAB)">⬆️ Save your Build</button>
                         </div>
 
                         <div class="table-wrapper" style="max-height: 400px; overflow-y: auto;">
@@ -121,7 +138,9 @@
                                     </tr>
                                 </thead>
                                 <tbody id="communityTableBody">
-                                    <tr><td colspan="3" class="text-center">Loading builds...</td></tr>
+                                    <tr>
+                                        <td colspan="3" class="text-center">Loading builds...</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -129,7 +148,8 @@
                 </div>
 
                 <!-- PUBLISH BUILD MODAL -->
-                <div id="publishModal" class="modal-overlay hidden" onclick="if(event.target === this) closePublishModal()">
+                <div id="publishModal" class="modal-overlay hidden"
+                    onclick="if(event.target === this) closePublishModal()">
                     <div class="modal-box" style="max-width: 500px;">
                         <div class="modal-header">
                             <span class="modal-title">⬆️ Publish to Community</span>
@@ -139,8 +159,10 @@
                             <div id="publishAuthWarning" style="color: #f44336; margin-bottom: 10px; display: none;">
                                 You must be logged in via Discord to publish!
                             </div>
-                            <div style="flex-basis: 100%; font-size: 0.75rem; color: #888; margin-top: 8px; text-align: center;">
-                                Discord asks for your email, but we only store your Username for voting. Emails are kept private and never shown.
+                            <div
+                                style="flex-basis: 100%; font-size: 0.75rem; color: #888; margin-top: 8px; text-align: center;">
+                                Discord asks for your email, but we only store your Username for voting. Emails are kept
+                                private and never shown.
                             </div>
                             <input type="hidden" id="publishType" value="gear">
                             <div class="input-group">
@@ -149,7 +171,8 @@
                             </div>
                             <div class="input-group">
                                 <label>Comment (Max 250 chars)</label>
-                                <textarea id="publishComment" placeholder="Explain your build..." maxlength="250" style="width:100%; height:80px; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); color: #fff; padding: 8px; border-radius: 4px;"></textarea>
+                                <textarea id="publishComment" placeholder="Explain your build..." maxlength="250"
+                                    style="width:100%; height:80px; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); color: #fff; padding: 8px; border-radius: 4px;"></textarea>
                             </div>
                             <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 15px;">
                                 <button class="primary-btn" onclick="publishBuild()">Publish</button>
@@ -160,7 +183,8 @@
                 </div>
 
                 <!-- CUSTOM ALERTS & CONFIRMS -->
-                <div id="customAlertModal" class="modal-overlay hidden" style="z-index: 9999;" onclick="if(event.target === this) closeCustomAlert()">
+                <div id="customAlertModal" class="modal-overlay hidden" style="z-index: 9999;"
+                    onclick="if(event.target === this) closeCustomAlert()">
                     <div class="modal-box" style="max-width: 400px; text-align: center;">
                         <div class="modal-header">
                             <span class="modal-title" id="alertModalTitle" style="color: #ff9800;">Information</span>
@@ -175,7 +199,8 @@
                     </div>
                 </div>
 
-                <div id="customConfirmModal" class="modal-overlay hidden" style="z-index: 9999;" onclick="if(event.target === this) closeCustomConfirm(false)">
+                <div id="customConfirmModal" class="modal-overlay hidden" style="z-index: 9999;"
+                    onclick="if(event.target === this) closeCustomConfirm(false)">
                     <div class="modal-box" style="max-width: 400px; text-align: center;">
                         <div class="modal-header">
                             <span class="modal-title" id="confirmModalTitle">Please Confirm</span>
@@ -266,22 +291,36 @@
 
                             <div class="char-middle">
                                 <div style="display: flex; justify-content: flex-start; margin-bottom: 15px;">
-                                    <button class="btn-mini primary-btn" style="padding: 8px 20px; font-weight: bold;" onclick="openCommunityModal('gear')">🌍 Presets & Community</button>
+                                    <button class="btn-mini primary-btn" style="padding: 8px 20px; font-weight: bold;"
+                                        onclick="openCommunityModal('gear')">🌍 Presets & Community</button>
                                 </div>
-                                <div
-                                    style="margin-bottom: 10px; background: rgba(0,0,0,0.2); padding: 10px 15px; border-radius: 8px; border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; position: relative;">
-                                    <label
-                                        style="white-space: nowrap; margin: 0; color: var(--text-color); font-size: 0.85rem;">Allowed
-                                        Item Sources:</label>
+
+                                <div style="margin-bottom: 10px; background: rgba(0,0,0,0.2); padding: 10px 15px; border-radius: 8px; border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; position: relative;">
+                                    <label style="white-space: nowrap; margin: 0; color: var(--text-color); font-size: 0.85rem;">Allowed Item Sources:</label>
+                                    
+                                    <!-- NEU: Dropdown für die Phase-Presets -->
+                                    <div class="select-wrapper" style="flex-grow: 1; margin: 0;">
+                                        <select id="phase_preset_select" onchange="applyPhasePreset(this.value)" style="width: 100%; margin: 0; padding: 6px;">
+                                            <option value="all">All Phases (No Restrictions)</option>
+                                            <option value="0">Phase 0 (LKH, Onyxia, MC)</option>
+                                            <option value="1">Phase 1 (Zul'Gurub)</option>
+                                            <option value="2">Phase 2 (Blackwing Lair)</option>
+                                            <option value="3">Phase 3 (Emerald Sanctum)</option>
+                                            <option value="4">Phase 4 (Ahn'Qiraj)</option>
+                                            <option value="5">Phase 5 (Timbermaw Hold)</option>
+                                            <option value="6">Phase 6 (Naxxramas)</option>
+                                            <option value="7">Phase 7 (Upper Karazhan Halls)</option>
+                                        </select>
+                                    </div>
+
                                     <div class="select-wrapper" style="flex-grow: 1; margin: 5px;">
-                                        <button class="btn-mini" onclick="toggleSourceMenu(event)" id="sourceMenuBtn"
-                                            style="margin: 0; padding: 6px 22px;">⚙️ Filter Sources </button>
+                                        <button class="btn-mini" onclick="toggleSourceMenu(event)" id="sourceMenuBtn" style="margin: 0; padding: 6px 22px;">⚙️ Filter Sources </button>
                                         <ul class="source-menu" id="sourceMenuRoot" style="display:none;">
                                             <!-- Wird dynamisch von JS befüllt -->
                                         </ul>
                                     </div>
                                 </div>
-                                
+
                                 <h2 style="margin-bottom:10px; font-size:1rem; text-align: center;">Stat Weights (Input)
                                 </h2>
                                 <div class="gp-stats-config"
@@ -418,9 +457,13 @@
                                 <div class="card-body">
 
                                     <!-- NEU: Talent Preset Steuerung -->
-                                    <div style="display:flex; justify-content:space-between; margin-bottom:15px; align-items:center; flex-wrap: wrap; gap: 10px; border-bottom: 1px solid var(--border-color); padding-bottom: 15px;">
-                                        <button class="btn-mini primary-btn" style="padding: 8px 20px; font-weight: bold;" onclick="openCommunityModal('talents')">🌍 Presets & Community</button>
-                                        <button class="btn-mini" onclick="clearTalents()" style="color:#f44336; border-color:#f44336;">🗑️ Reset All</button>
+                                    <div
+                                        style="display:flex; justify-content:space-between; margin-bottom:15px; align-items:center; flex-wrap: wrap; gap: 10px; border-bottom: 1px solid var(--border-color); padding-bottom: 15px;">
+                                        <button class="btn-mini primary-btn"
+                                            style="padding: 8px 20px; font-weight: bold;"
+                                            onclick="openCommunityModal('talents')">🌍 Presets & Community</button>
+                                        <button class="btn-mini" onclick="clearTalents()"
+                                            style="color:#f44336; border-color:#f44336;">🗑️ Reset All</button>
                                     </div>
 
                                     <div class="talent-trees-container"
@@ -748,20 +791,29 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="rotation-builder-container">
-                                        <div class="rb-header" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; border-bottom:1px solid var(--border-color); padding-bottom:15px; flex-wrap:wrap; gap:10px;">
-                                            <button class="btn-mini primary-btn" style="padding: 8px 20px; font-weight: bold;" onclick="openCommunityModal('rotation')">🌍 Presets & Community</button>
-                                            <button class="btn-mini" onclick="clearRotation()" style="color:#f44336; border-color:#f44336; padding:8px 12px;">🗑️ Clear Rotation</button>
+                                        <div class="rb-header"
+                                            style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; border-bottom:1px solid var(--border-color); padding-bottom:15px; flex-wrap:wrap; gap:10px;">
+                                            <button class="btn-mini primary-btn"
+                                                style="padding: 8px 20px; font-weight: bold;"
+                                                onclick="openCommunityModal('rotation')">🌍 Presets & Community</button>
+                                            <button class="btn-mini" onclick="clearRotation()"
+                                                style="color:#f44336; border-color:#f44336; padding:8px 12px;">🗑️ Clear
+                                                Rotation</button>
                                         </div>
 
                                         <!-- Meta Daten für Name und Beschreibung (wie bei Feral) -->
-                                        <div class="rb-meta" style="display:flex; gap:15px; margin-bottom:15px; padding-bottom:15px; border-bottom:1px dashed #444;">
+                                        <div class="rb-meta"
+                                            style="display:flex; gap:15px; margin-bottom:15px; padding-bottom:15px; border-bottom:1px dashed #444;">
                                             <div class="input-group" style="margin:0; flex:1; max-width:250px;">
                                                 <label>Rotation Name</label>
-                                                <input type="text" id="rb_meta_name" placeholder="My Custom Rota" onchange="updateRotationMeta('name', this.value)">
+                                                <input type="text" id="rb_meta_name" placeholder="My Custom Rota"
+                                                    onchange="updateRotationMeta('name', this.value)">
                                             </div>
                                             <div class="input-group" style="margin:0; flex:2;">
                                                 <label>Description (Optional)</label>
-                                                <input type="text" id="rb_meta_desc" placeholder="Describe what this rotation does..." onchange="updateRotationMeta('desc', this.value)">
+                                                <input type="text" id="rb_meta_desc"
+                                                    placeholder="Describe what this rotation does..."
+                                                    onchange="updateRotationMeta('desc', this.value)">
                                             </div>
                                         </div>
 
@@ -960,4 +1012,5 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/community.js"></script>
 </body>
+
 </html>
