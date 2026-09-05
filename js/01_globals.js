@@ -550,7 +550,7 @@ var ROTATION_SKILLS = [
     { id: "Innervate", name: "Innervate", icon: "spell_nature_lightning", hasRanks: false },
     { id: "MajorManaPotion", name: "Mana Potion", icon: "inv_potion_76", hasRanks: false },
     { id: "DemonicRune", name: "Demonic Rune", icon: "inv_misc_rune_04", hasRanks: false },
-    { id: "JujuFlurry", name: "Juju Flurry", icon: "inv_misc_monsterflank", hasRanks: false },
+    { id: "JujuFlurry", name: "Juju Flurry", icon: "inv_misc_monsterscales_30", hasRanks: false },
     { id: "PotionOfQuickness", name: "Potion of Quickness", icon: "inv_potion_31", hasRanks: false },
     { id: "Trinket1", name: "Use Trinket 1", icon: "inv_jewelry_trinket_04", hasRanks: false },
     { id: "Trinket2", name: "Use Trinket 2", icon: "inv_jewelry_trinket_04", hasRanks: false }

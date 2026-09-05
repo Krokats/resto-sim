@@ -8,7 +8,6 @@
 
 function init() {
     setupUIListeners();
-    populateBiSDropdown();
     addSim(true);
 
     renderTalentTree();
