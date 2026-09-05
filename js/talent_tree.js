@@ -356,48 +356,6 @@ function drawArrows(container, treeData) {
 // TALENT PRESET LOGIC
 // ============================================================================
 
-function renderTalentPresetDropdown() {
-    let select = document.getElementById("talent_preset_select");
-    if (!select) return;
-    select.innerHTML = '<option value="">-- Select Preset --</option>';
-    for (let name in TALENT_PRESETS) {
-        select.innerHTML += `<option value="${name}">${name}</option>`;
-    }
-}
-
-function loadTalentPreset() {
-    let name = document.getElementById("talent_preset_select").value;
-    if (!name || !TALENT_PRESETS[name]) return;
-
-    TALENT_CONFIG = structuredClone(TALENT_PRESETS[name]);
-    renderTalentTree();
-    saveCurrentState();
-    showToast("Talent Preset Loaded!");
-}
-
-function saveTalentPreset() {
-    let name = prompt("Enter a name for this Talent Preset:");
-    if (!name || name.trim() === "") return;
-
-    TALENT_PRESETS[name] = structuredClone(TALENT_CONFIG);
-    localStorage.setItem("resto_talent_presets", JSON.stringify(TALENT_PRESETS));
-    renderTalentPresetDropdown();
-    document.getElementById("talent_preset_select").value = name;
-    showToast("Preset Saved!");
-}
-
-function deleteTalentPreset() {
-    let name = document.getElementById("talent_preset_select").value;
-    if (!name || !TALENT_PRESETS[name]) return;
-
-    if (confirm(`Delete preset '${name}'?`)) {
-        delete TALENT_PRESETS[name];
-        localStorage.setItem("resto_talent_presets", JSON.stringify(TALENT_PRESETS));
-        renderTalentPresetDropdown();
-        showToast("Preset Deleted!");
-    }
-}
-
 function clearTalents() {
     if (confirm("Reset all talent points?")) {
         for (let key in TALENT_CONFIG) {
@@ -496,7 +454,6 @@ var TALENT_TREES = {
         { id: "treeOfLife", name: "Tree of Life Form", icon: "ability_druid_treeoflife", max: 1, row: 6, col: 1, req: null, desc: "Shapeshift into the Tree of Life. While in this form armor contribution from items is increased by 180%, the healing power of nearby party members is increased by an amount equal to 20% of your spirit, your movement speed is reduced by 20%, and you cannot cast damaging spells or Healing Touch, but the mana cost of heal over time spells is reduced by 20%." }
     ]
 };
-
 
 var TALENT_CONFIG = structuredClone(TALENT_PRESETS["Full Resto (0/0/51)"]);
 

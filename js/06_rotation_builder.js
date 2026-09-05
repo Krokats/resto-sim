@@ -7,7 +7,6 @@ var draggedStepIndex = null;
 function initRotationBuilder() {
     try {
         console.log("Starte Resto Rotation Builder...");
-        populatePresetDropdown();
         renderRotationToolbox();
         renderRotationList();
 
@@ -365,53 +364,6 @@ function removeCondition(sIdx, cIdx) {
     CUSTOM_ROTATION.steps[sIdx].conditions.splice(cIdx, 1);
     CUSTOM_ROTATION.name = "Custom Rotation";
     renderRotationList();
-}
-
-function populatePresetDropdown() {
-    var sel = document.getElementById("rotation_preset_select");
-    if (!sel) return;
-    sel.innerHTML = '<option value="">-- Select Preset --</option>';
-
-    var grpDef = document.createElement("optgroup");
-    grpDef.label = "Default Presets";
-    Object.keys(PRESET_ROTATIONS).forEach(k => {
-        var opt = document.createElement("option"); opt.value = "def_" + k; opt.innerText = PRESET_ROTATIONS[k].name || k;
-        grpDef.appendChild(opt);
-    });
-    sel.appendChild(grpDef);
-
-    var customStr = localStorage.getItem("resto_sim_custom_rotations");
-    if (customStr) {
-        try {
-            var custom = JSON.parse(customStr);
-            var grpCus = document.createElement("optgroup");
-            grpCus.label = "My Saved Presets";
-            Object.keys(custom).forEach(k => {
-                var opt = document.createElement("option"); opt.value = "cus_" + k; opt.innerText = custom[k].name || k;
-                grpCus.appendChild(opt);
-            });
-            if (grpCus.children.length > 0) sel.appendChild(grpCus);
-        } catch (e) { }
-    }
-}
-
-function loadSelectedPreset() {
-    var val = document.getElementById("rotation_preset_select").value;
-    if (!val) { alert("Please select a preset from the dropdown first."); return; }
-    if (CUSTOM_ROTATION && CUSTOM_ROTATION.steps && CUSTOM_ROTATION.steps.length > 0) {
-        if (!confirm("Overwrite your current rotation?")) return;
-    }
-
-    if (val.startsWith("def_")) {
-        var k = val.substring(4);
-        CUSTOM_ROTATION = JSON.parse(JSON.stringify(PRESET_ROTATIONS[k]));
-    } else if (val.startsWith("cus_")) {
-        var k = val.substring(4);
-        var custom = JSON.parse(localStorage.getItem("resto_sim_custom_rotations") || "{}");
-        if (custom[k]) CUSTOM_ROTATION = JSON.parse(JSON.stringify(custom[k]));
-    }
-    renderRotationList();
-    showToast("Preset loaded!");
 }
 
 function clearRotation() {
